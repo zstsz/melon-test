@@ -8,7 +8,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Check Tickets
-        uses: zstsz/melon-test@v1.1.0
+        uses: zstsz/melon-test@master
         with:
           product-id: 211541
           schedule-id: 100003
