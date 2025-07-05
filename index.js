@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = require("@actions/core");
-const webhook_1 = require("@slack/webhook");
+//const webhook_1 = require("@slack/webhook");
+const fetch = require('node-fetch');
 const axios_1 = require("axios");
 const qs = require("querystring");
 (async () => {
@@ -41,7 +42,12 @@ const qs = require("querystring");
         const link = `http://tkglobal.melon.com/performance/index.htm?${qs.stringify({
             prodId: productId,
         })}`;
-        await webhook.send(`${message} ${link}`);
+        //await webhook.send(`${message} ${link}`);
+        await fetch(webhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ content: `${message} ${link}` })
+        });
     }
 })().catch((e) => {
     console.error(e.stack); // tslint:disable-line
