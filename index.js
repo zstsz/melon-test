@@ -28,6 +28,9 @@ const qs = require("querystring");
         params: {
             v: "1",
         },
+        headers: {
+            
+        },
         data: qs.stringify({
             prodId: productId,
             scheduleNo: scheduleId,
