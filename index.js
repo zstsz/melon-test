@@ -23,7 +23,7 @@ const qs = require("querystring");
     const webhook = new webhook_1.IncomingWebhook(webhookUrl);
     const res = await axios_1.default({
         method: "POST",
-        url: "https://ticket.melon.com/tktapi/product/seatStateInfo.json",
+        url: "https://tkglobal.melon.com/tktapi/product/block/summary.json",
         params: {
             v: "1",
         },
@@ -38,7 +38,7 @@ const qs = require("querystring");
     // tslint:disable-next-line
     console.log("Got response: ", res.data);
     if (res.data.chkResult) {
-        const link = `http://ticket.melon.com/performance/index.htm?${qs.stringify({
+        const link = `http://tkglobal.melon.com/performance/index.htm?${qs.stringify({
             prodId: productId,
         })}`;
         await webhook.send(`${message} ${link}`);
