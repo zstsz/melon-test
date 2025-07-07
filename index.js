@@ -22,21 +22,29 @@ const qs = require("querystring");
     });
     const message = (_a = core.getInput("message")) !== null && _a !== void 0 ? _a : "티켓사세요";
     //const webhook = new webhook_1.IncomingWebhook(webhookUrl);
+    console.log("configuration success!\n");
     const res = await axios_1.default({
         method: "POST",
         url: "https://tkglobal.melon.com/tktapi/product/block/summary.json",
         params: {
             v: "1",
+            callback: "getBlockSummaryCountCallBack",
         },
         headers: {
-            
+            Accept: "text/javascript, application/javascript, application/ecmascript, application/x-ecmascript, */*; q=0.01",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept-Language": "zh-CN,zh;q=0.9,ko;q=0.8,en;q=0.7",
+            //Content-Length: 59,
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            Cookie: "PC_PCID=17503346733961389426620; keyCookie_T=1000403728",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+            "X-Requested-With": "XMLHttpRequest",
         },
         data: qs.stringify({
-            prodId: productId,
-            scheduleNo: scheduleId,
-            seatId,
-            volume: 1,
-            selectedGradeVolume: 1,
+            prodId:productId,
+            pocCode:"SC0002",
+            scheduleNo:scheduleId,
+            seatGradeNo:""
         }),
     });
     // tslint:disable-next-line
